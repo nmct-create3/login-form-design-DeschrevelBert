@@ -18,7 +18,20 @@
 \*------------------------------------*/
 
 :root {
-    
+    --global-color-alpha-rgb: 255 51 51;
+    --global-color-alpha: rgb(var(--global-color-alpha-rgb));
+    --global-border-width: 1px;
+
+    --global-line-height: var(--global-whitespace);
+    --global-border-width: 1px;
+    --global-font-size: 16px;
+
+    --global-whitespace-xs: calc(var(--global-whitespace) / 2); /* = 4px */
+    --global-whitespace-sm: 8px; 
+    --global-whitespace-md: calc(var(--global-whitespace-sm-) * 2); /* = 16px */
+    --global-whitespace: calc(var(--global-whitespace-sm) * 3); /* = 24px */
+    --global-whitespace-lg: calc(var(--global-whitespace-sm) * 4); /* = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2); /* = 48px */
 }
 
 /* CSS variables here */
@@ -42,7 +55,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #F5F6FA;
-    accent-color: #FF3333;
+    accent-color: var(--global-color-alpha);
 }
 
 *,
@@ -93,28 +106,28 @@ h3 {
 
 h1 {
     font-size: 36px;
-    line-height: 48px;
-    margin: 0 0 24px;
+    line-height: var(--global-whitespace-xl);
+    margin: 0 0 var(--global-whitespace);
 }
 
 h2 {
     font-size: 32px;
     line-height: 40px;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 h3 {
     font-size: 26px;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 h4,
 h5,
 h6 {
     font-size: 20px;
-    line-height: 24px;
-    margin: 0 0 24px;
+    line-height: var(--global-whitespace);
+    margin: 0 0 var(--global-whitespace);
 }
 
 p,
@@ -201,7 +214,9 @@ input{
 .o-row--login {
     /* stuff here to align the card */
     display: flex;
-    justify-content: center;
+    justify-content: center; /*centers items on the line (the x-axis by default)*/
+    align-items: center; /*centers items on the cross-axis (y by default)*/
+    min-height: 100vh;
 }
 
 /* size modifiers */
@@ -493,7 +508,7 @@ input{
     appearance: none;
 
     width: 100%;
-    border-width: 1px;
+    border-width: var(--global-border-width);
     border-style: solid;
     border-color: #E2E3E7;
     /* border: 1px solid #E2E3E7; */
@@ -504,8 +519,9 @@ input{
     /* font-family mag overgeërfd worden van het element 
     waarvan de font-family is gedeclareerd die een parent is van het huidige element, 
     in dit geval de html-tag */
-    line-height: 1.5rem;
-    padding: 11px 1rem;
+    line-height: var(--global-whitespace);
+    padding: calc(var(--global-whitespace-sm) * 1.5 - var(--global-border-width)) 1rem;
+    /* padding: 11px 1rem; */
     outline: none;
 }
 
