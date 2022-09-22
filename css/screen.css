@@ -2,11 +2,24 @@
 #FONTS
 \*------------------------------------*/
 
+@font-face {
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+    font-weight: 700;
+}
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
-:root {}
+:root {
+    
+}
 
 /* CSS variables here */
 
@@ -23,12 +36,13 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: "Inter Web", Helvetica, arial, sans-serif;
+    color: #20223a;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: #F5F6FA;
+    accent-color: #FF3333;
 }
 
 *,
@@ -44,14 +58,8 @@ html {
 * Customize the background color to match your design.
 */
 
-::-moz-selection {
-    background: HotPink;
-    color: white;
-    text-shadow: none;
-}
-
 ::selection {
-    background: HotPink;
+    background: #3385FF;
     color: white;
     text-shadow: none;
 }
@@ -156,18 +164,23 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: #3385FF;
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: #3385FF;
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: #1B4186;
+}
+
+label,
+input{
+    display: block;
 }
 
 /*------------------------------------*\
@@ -187,6 +200,8 @@ a:focus {
 
 .o-row--login {
     /* stuff here to align the card */
+    display: flex;
+    justify-content: center;
 }
 
 /* size modifiers */
@@ -431,6 +446,24 @@ a:focus {
     ---
     Website main logo
 */
+.c-logo{
+    height: 24px;
+    display: flex;
+    justify-content: center;
+}
+.c-logo__symbol{
+    height: 100%;
+}
+.c-logo__path--1{
+    fill : #20223A;
+}
+.c-logo__path--2{
+    fill : #3385FF;
+}
+.c-logo__path--3{
+    fill:#20223A;
+}
+
 
 /*
     Component: Card
@@ -443,6 +476,10 @@ a:focus {
     ---
     Everything form related here
 */
+.c-form-field--option{
+    display: flex;
+    gap: .5rem;
+}
 
 /*
     Component: Input
@@ -450,9 +487,32 @@ a:focus {
     Class to put on all input="text" like form inputs
 */
 
-.c-input {}
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
-.c-input:focus {}
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E2E3E7;
+    /* border: 1px solid #E2E3E7; */
+    border-radius: 3px;
+
+    font-family: inherit;
+    color: inherit;
+    /* font-family mag overgeërfd worden van het element 
+    waarvan de font-family is gedeclareerd die een parent is van het huidige element, 
+    in dit geval de html-tag */
+    line-height: 1.5rem;
+    padding: 11px 1rem;
+    outline: none;
+}
+
+.c-input:focus {
+    border-color: #3385FF;
+    box-shadow: 0 0 0 3px #3385ff4d;
+}
 
 /*
     Component: Label
@@ -460,11 +520,22 @@ a:focus {
     Class to put on all form labels
 */
 
-.c-label {}
+.c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: .5rem;
+    color: #606274;
+}
 
 /* If a input is focused within the form-field class change te color of the label */
 
 .c-form-field:focus-within .c-label {}
+
+.c-password{
+    display: flex;
+    justify-content: center;
+    margin-top: -8px;
+}
 
 /*
     Component: Button
@@ -472,15 +543,63 @@ a:focus {
     Class to put on form buttons or links
 */
 
-.c-button {}
+.c-button {
+    width: 100%;
+    background-color: #3385FF;
+    border: 1px solid #2E77E6;
+    border-radius: 3px;
+    line-height: 24px;
+    padding: 11px 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
 
-.c-button:hover {}
+.c-button:hover {
+    background-color: #4F95FF;
+    border-color: #2E77E6;
+}
 
-.c-button:focus {}
+.c-button:focus {
+    background-color: #3385FF;
+    border-color: #2E77E6;
+    box-shadow: 0 0 0 3px #3385ff4d;
+}
 
-.c-button:active {}
+.c-button:active {
+    background-color: #2E77E6;
+    border-color: #2E77E6;
+}
 
 .c-button--block {}
+
+.c-card{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .07);
+}
+.c-card__body{
+    padding: 48px;
+}
+.c-card__title{
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+}
+
+.c-card__footer{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+    line-height: 20px;
+    padding-top: 20px;
+}
 
 /*------------------------------------*\
 #UTILITIES
